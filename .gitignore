@@ -1,5 +1,5 @@
 server/venv
-
+client/.env
 __pycache__/
 *.pyc
 *.pyo

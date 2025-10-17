@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import ExpertSystem from "./pages/ExpertSystem";
+import Navbar from "./components/Navbar";
+import useScrollToTop from "./hooks/useScrollToTop";
+import AboutPage from "./pages/AboutPage";
+import ScrollToTopButton from "./components/ScrollToTopButton";
+import ExpertSystemSimple from "./pages/ExpertSystemSimple";
 
 function App() {
-  const [count, setCount] = useState(0)
+  useScrollToTop();
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Navbar />
+      <div className="pt-11">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/expert" element={<ExpertSystem />} />
+          <Route path="/expert-simple" element={<ExpertSystemSimple />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ScrollToTopButton />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
